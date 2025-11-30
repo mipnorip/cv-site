@@ -26,14 +26,12 @@
   text-decoration: none;
   color: var(--text-color);
   transition: color 0.3s ease;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .logoLink:hover {
-  opacity: 0.8;
+  color: var(--text-light);
 }
 
 .rightSection {
@@ -95,7 +93,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--gradient);
+  background: var(--primary-color);
   transition: width 0.3s ease;
 }
 

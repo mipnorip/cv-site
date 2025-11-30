@@ -60,7 +60,7 @@ export class Projects {
 
     const linkHTML = project.link
       ? `<a href="${project.link}" target="_blank" rel="noopener noreferrer" class="${projectStyles.link}">
-           Посмотреть проект →
+           VIEW PROJECT →
          </a>`
       : '';
 

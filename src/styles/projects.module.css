@@ -24,28 +24,30 @@
 
 .filterButton {
   padding: 0.75rem 1.5rem;
-  border: 2px solid var(--primary-color);
-  background: transparent;
-  color: var(--primary-color);
-  border-radius: 25px;
+  border: 2px solid var(--border-dark);
+  background: var(--bg-card);
+  color: var(--text-color);
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
   transition: all 0.3s ease;
 }
 
 .filterButton:hover {
-  background: var(--primary-color);
-  color: white;
+  background: var(--bg-dark);
+  color: var(--bg-card);
+  border-color: var(--text-color);
   transform: translateY(-2px);
   box-shadow: var(--shadow);
 }
 
 .filterButtonActive {
-  background: var(--gradient);
-  border-color: transparent;
-  color: white;
+  background: var(--bg-dark);
+  color: var(--bg-card);
+  border-color: var(--text-color);
 }
 
 .grid {
@@ -55,20 +57,37 @@
 }
 
 .card {
-  background: var(--bg-card);
-  border-radius: 12px;
+  background: var(--bg-dark);
   overflow: hidden;
   box-shadow: var(--shadow);
-  border: 1px solid var(--border-color);
+  border: 3px solid var(--border-dark);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--bg-card) 0px,
+    var(--bg-card) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  z-index: 1;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-hover);
-  border-color: var(--primary-color);
+  border-color: var(--text-color);
 }
 
 .image,
@@ -76,16 +95,25 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
-  background: var(--gradient);
+  background: var(--bg-light);
+  position: relative;
 }
 
 .imagePlaceholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4rem;
-  color: #fff;
+  font-size: 3rem;
+  color: var(--text-light);
   font-weight: bold;
+  font-family: var(--font-mono);
+  background: repeating-linear-gradient(
+    45deg,
+    var(--bg-light) 0px,
+    var(--bg-light) 10px,
+    var(--bg-card) 10px,
+    var(--bg-card) 20px
+  );
 }
 
 .content {
@@ -93,18 +121,25 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  background: var(--bg-dark);
 }
 
 .cardTitle {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   font-family: var(--font-display);
   margin: 0 0 1rem 0;
+  color: var(--bg-card);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+[data-theme="dark"] .cardTitle {
   color: var(--text-color);
 }
 
 .description {
-  color: var(--text-light);
+  color: var(--text-muted);
   line-height: 1.6;
   margin: 0 0 1.5rem 0;
   flex: 1;
@@ -119,35 +154,53 @@
 
 .techTag {
   display: inline-block;
-  padding: 0.4rem 0.8rem;
-  background: var(--bg-light);
+  padding: 0.3rem 0.6rem;
+  background: var(--bg-card);
   color: var(--text-color);
-  border: 1px solid var(--border-color);
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 500;
+  border: 1px solid var(--border-dark);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .techTag:hover {
-  background: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
+  background: var(--bg-light);
+  color: var(--text-color);
+  border-color: var(--text-color);
 }
 
 .link {
   display: inline-block;
-  color: var(--primary-color);
+  color: var(--bg-card);
   text-decoration: none;
   font-weight: 600;
   font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--bg-card);
   transition: all 0.3s ease;
   margin-top: auto;
+  align-self: flex-start;
 }
 
 .link:hover {
-  color: var(--accent-color);
+  background: var(--bg-card);
+  color: var(--bg-dark);
   transform: translateX(5px);
+}
+
+[data-theme="dark"] .link {
+  color: var(--text-color);
+  border-color: var(--text-color);
+}
+
+[data-theme="dark"] .link:hover {
+  background: var(--bg-light);
+  color: var(--text-color);
 }
 
 @media (max-width: 768px) {

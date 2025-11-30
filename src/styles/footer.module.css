@@ -2,8 +2,27 @@
   background: var(--bg-light);
   color: var(--text-color);
   padding: 2rem;
-  border-top: 1px solid var(--border-color);
+  border-top: 3px solid var(--border-dark);
   transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 800px;
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--border-dark) 0px,
+    var(--border-dark) 10px,
+    transparent 10px,
+    transparent 20px
+  );
 }
 
 .content {
@@ -19,12 +38,16 @@
 .copyright {
   margin: 0;
   color: var(--text-light);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
 }
 
 .social {
   display: flex;
-  gap: 1.5rem;
+  gap: 0;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .socialLink {
@@ -34,11 +57,22 @@
   font-weight: 600;
   font-family: var(--font-heading);
   padding: 0.5rem 1rem;
-  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.socialLink:not(:last-child)::after {
+  content: '|';
+  position: absolute;
+  right: -0.5rem;
+  color: var(--text-muted);
+  font-weight: 300;
 }
 
 .socialLink:hover {
-  color: var(--primary-color);
+  color: var(--bg-dark);
   background: var(--bg-card);
   transform: translateY(-2px);
 }

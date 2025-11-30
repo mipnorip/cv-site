@@ -18,13 +18,22 @@ export class PersonalInfo {
     this.container.innerHTML = `
       <div class="${personalStyles.container}">
         <div class="${personalStyles.content}">
+          <div class="${personalStyles.cornerBolt} ${personalStyles.cornerBoltTopLeft}"></div>
+          <div class="${personalStyles.cornerBolt} ${personalStyles.cornerBoltTopRight}"></div>
+          <div class="${personalStyles.cornerBolt} ${personalStyles.cornerBoltBottomLeft}"></div>
+          <div class="${personalStyles.cornerBolt} ${personalStyles.cornerBoltBottomRight}"></div>
           <div class="${personalStyles.imageWrapper}">
-            <img src="${data.photo}" alt="${data.name}" class="${personalStyles.photo}" />
+            <div class="${personalStyles.photoFrame}">
+              <img src="${data.photo}" alt="${data.name}" class="${personalStyles.photo}" />
+            </div>
           </div>
           <div class="${personalStyles.info}">
-            <h1 class="${personalStyles.name}">${data.name}</h1>
-            <p class="${personalStyles.position}">${data.position}</p>
-            <p class="${personalStyles.age}">${data.age} лет</p>
+            <div class="${personalStyles.nameSection}">
+              <h1 class="${personalStyles.name}">${data.name.toUpperCase()}</h1>
+              <div class="${personalStyles.divider}"></div>
+            </div>
+            <p class="${personalStyles.position}">${data.position.toUpperCase()}</p>
+            <p class="${personalStyles.age}">AGE: ${data.age}</p>
             <div class="${personalStyles.contacts}">
               ${contactsHTML}
             </div>

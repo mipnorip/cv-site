@@ -42,15 +42,17 @@ export class Experience {
     return `
       <div class="${experienceStyles.item}">
         <div class="${experienceStyles.content}">
-          <div class="${experienceStyles.header}">
-            <h3 class="${experienceStyles.company}">${exp.company}</h3>
-            <span class="${experienceStyles.period}">${period}</span>
+          <div class="${experienceStyles.contentInner}">
+            <div class="${experienceStyles.header}">
+              <h3 class="${experienceStyles.company}">${exp.company.toUpperCase()}</h3>
+              <span class="${experienceStyles.period}">${period}</span>
+            </div>
+            <p class="${experienceStyles.position}">${exp.position.toUpperCase()}</p>
+            <ul class="${experienceStyles.description}">
+              ${descriptionHTML}
+            </ul>
+            ${technologiesHTML}
           </div>
-          <p class="${experienceStyles.position}">${exp.position}</p>
-          <ul class="${experienceStyles.description}">
-            ${descriptionHTML}
-          </ul>
-          ${technologiesHTML}
         </div>
       </div>
     `;

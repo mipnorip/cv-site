@@ -5,45 +5,68 @@
 }
 
 :root {
-  /* Light theme colors - интересная цветовая гамма */
-  --primary-color: #6366f1;
-  --primary-hover: #4f46e5;
-  --secondary-color: #8b5cf6;
-  --accent-color: #ec4899;
-  --text-color: #1f2937;
-  --text-light: #6b7280;
-  --bg-color: #ffffff;
-  --bg-light: #f9fafb;
+  /* Light theme - монохромная палитра на основе референса */
+  --primary-color: #111111;
+  --primary-hover: #000000;
+  --secondary-color: #606060;
+  --accent-color: #303030;
+  --text-color: #111111;
+  --text-light: #606060;
+  --text-muted: #808080;
+  --bg-color: #f5f5f5;
+  --bg-light: #e0e0e0;
   --bg-card: #ffffff;
-  --border-color: #e5e7eb;
-  --shadow: 0 4px 15px rgba(99, 102, 241, 0.1);
-  --shadow-hover: 0 8px 25px rgba(99, 102, 241, 0.15);
-  --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  --bg-dark: #111111;
+  --border-color: #d0d0d0;
+  --border-dark: #303030;
+  --shadow: 0 4px 15px rgba(17, 17, 17, 0.1);
+  --shadow-hover: 0 8px 25px rgba(17, 17, 17, 0.15);
+  --shadow-strong: 0 4px 20px rgba(17, 17, 17, 0.2);
+  --gradient: linear-gradient(180deg, #f5f5f5 0%, #e0e0e0 100%);
+  --pattern: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(17, 17, 17, 0.03) 2px,
+    rgba(17, 17, 17, 0.03) 4px
+  );
   
   /* Fonts */
   --font-display: 'Oswald', sans-serif; /* Для заголовков */
   --font-heading: 'Manrope', sans-serif; /* Для подзаголовков */
   --font-body: 'Manrope', sans-serif; /* Основной текст */
   --font-mono: 'Public Pixel', monospace; /* Моноширинный */
-  --font-decorative: 'Berkshire Swash', cursive; /* Декоративный (аналог Berrter VCRCJA) */
-  --font-pixel: 'Press Start 2P', monospace; /* Пиксельный (аналог Tyny5) */
-  --font-alt: 'Inter', sans-serif; /* Альтернативный (аналог Galgo) */
+  --font-decorative: 'Berkshire Swash', cursive; /* Декоративный */
+  --font-pixel: 'Press Start 2P', monospace; /* Пиксельный */
+  --font-alt: 'Inter', sans-serif; /* Альтернативный */
 }
 
 [data-theme="dark"] {
-  --primary-color: #818cf8;
-  --primary-hover: #a5b4fc;
-  --secondary-color: #a78bfa;
-  --accent-color: #f472b6;
-  --text-color: #f9fafb;
-  --text-light: #d1d5db;
-  --bg-color: #111827;
-  --bg-light: #1f2937;
-  --bg-card: #1f2937;
-  --border-color: #374151;
-  --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.4);
-  --gradient: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #f472b6 100%);
+  /* Dark theme - инвертированная монохромная палитра */
+  --primary-color: #f0f0f0;
+  --primary-hover: #ffffff;
+  --secondary-color: #c0c0c0;
+  --accent-color: #d0d0d0;
+  --text-color: #f0f0f0;
+  --text-light: #c0c0c0;
+  --text-muted: #808080;
+  --bg-color: #111111;
+  --bg-light: #1a1a1a;
+  --bg-card: #1a1a1a;
+  --bg-dark: #000000;
+  --border-color: #303030;
+  --border-dark: #606060;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.6);
+  --shadow-strong: 0 4px 20px rgba(0, 0, 0, 0.7);
+  --gradient: linear-gradient(180deg, #111111 0%, #1a1a1a 100%);
+  --pattern: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(240, 240, 240, 0.03) 2px,
+    rgba(240, 240, 240, 0.03) 4px
+  );
 }
 
 body {
@@ -53,6 +76,7 @@ body {
   color: var(--text-color);
   line-height: 1.6;
   background: var(--bg-color);
+  background-image: var(--pattern);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -60,14 +84,56 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+/* Декоративная рамка вокруг контента */
+#app::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid var(--border-color);
+  pointer-events: none;
+  z-index: 9999;
+  transition: border-color 0.3s ease;
 }
 
 main {
   flex: 1;
+  padding: 2rem 0;
+  position: relative;
 }
 
+/* Декоративные горизонтальные линии между секциями */
 section {
   scroll-margin-top: 80px;
+  position: relative;
+  padding: 4rem 0;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 800px;
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--border-color) 0px,
+    var(--border-color) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+section:first-of-type::before {
+  display: none;
 }
 
 a {

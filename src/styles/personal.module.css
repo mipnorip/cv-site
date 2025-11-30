@@ -9,13 +9,62 @@
   gap: 3rem;
   align-items: center;
   flex-wrap: wrap;
+  background: var(--bg-card);
+  border: 3px solid var(--border-dark);
+  padding: 3rem;
+  box-shadow: var(--shadow-strong);
+  position: relative;
+}
+
+/* Декоративные "болты" в углах карточки */
+.cornerBolt {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--border-dark);
+  background: var(--bg-card);
+  z-index: 1;
+}
+
+.cornerBoltTopLeft {
+  top: -6px;
+  left: -6px;
+}
+
+.cornerBoltTopRight {
+  top: -6px;
+  right: -6px;
+}
+
+.cornerBoltBottomLeft {
+  bottom: -6px;
+  left: -6px;
+}
+
+.cornerBoltBottomRight {
+  bottom: -6px;
+  right: -6px;
 }
 
 .imageWrapper {
   flex: 0 0 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photoFrame {
+  width: 250px;
+  height: 250px;
   aspect-ratio: 1;
   border-radius: 50%;
-  overflow: hidden;
+  padding: 8px;
+  border: 4px solid var(--border-dark);
+  background: var(--bg-card);
+  box-shadow: 
+    inset 0 0 0 2px var(--bg-light),
+    0 0 0 2px var(--border-dark),
+    0 8px 20px rgba(17, 17, 17, 0.2);
   position: relative;
 }
 
@@ -25,18 +74,18 @@
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
-  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-  transition: transform 0.3s ease;
   display: block;
+  border: 2px solid var(--bg-light);
 }
 
-.photo:hover {
-  transform: scale(1.05);
-}
 
 .info {
   flex: 1;
   min-width: 300px;
+}
+
+.nameSection {
+  margin-bottom: 1.5rem;
 }
 
 .name {
@@ -45,26 +94,41 @@
   font-family: var(--font-display);
   margin: 0 0 1rem 0;
   color: var(--text-color);
-  letter-spacing: 1px;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.divider {
+  width: 100%;
+  height: 2px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--border-dark) 0px,
+    var(--border-dark) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  margin: 1rem 0;
 }
 
 .position {
-  font-size: 1.5rem;
-  color: var(--primary-color);
+  font-size: 1.2rem;
+  color: var(--text-color);
   margin: 0 0 0.5rem 0;
   font-weight: 600;
   font-family: var(--font-heading);
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .age {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--text-light);
   margin: 0 0 2rem 0;
   font-weight: 400;
+  font-family: var(--font-mono);
+  letter-spacing: 1px;
 }
 
 .contacts {
@@ -79,20 +143,37 @@
   gap: 0.75rem;
   text-decoration: none;
   color: var(--text-color);
-  font-size: 1.1rem;
+  font-size: 1rem;
   padding: 0.75rem 1rem;
-  border-radius: 12px;
   transition: all 0.3s ease;
   background: var(--bg-light);
-  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--border-dark);
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+.contactLink::before {
+  content: '>';
+  position: absolute;
+  left: -12px;
+  color: var(--border-dark);
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .contactLink:hover {
-  background: var(--primary-color);
-  color: white;
-  transform: translateX(5px);
-  border-color: var(--primary-color);
+  background: var(--bg-dark);
+  color: var(--bg-card);
+  transform: translateX(8px);
+  border-left-color: var(--text-color);
   box-shadow: var(--shadow);
+}
+
+.contactLink:hover::before {
+  opacity: 1;
 }
 
 .contactIcon {
@@ -165,7 +246,13 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--gradient);
+    background: repeating-linear-gradient(
+      45deg,
+      transparent 0px,
+      transparent 5px,
+      rgba(17, 17, 17, 0.05) 5px,
+      rgba(17, 17, 17, 0.05) 10px
+    );
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 0;
@@ -173,22 +260,23 @@
 
   .contactLink:hover {
     transform: translateY(-4px) scale(1.02);
-    border-color: var(--primary-color);
+    border-color: var(--border-dark);
     box-shadow: var(--shadow-hover);
     background: var(--bg-card);
     color: var(--text-color);
   }
 
   .contactLink:hover::before {
-    opacity: 0.1;
+    opacity: 1;
   }
 
   .contactLink:hover .contactIcon {
     transform: scale(1.2);
+    border-color: var(--border-dark);
   }
 
   .contactLink:hover .contactText {
-    color: var(--primary-color);
+    color: var(--text-color);
     font-weight: 600;
   }
 
@@ -196,15 +284,15 @@
     font-size: 2rem;
     position: relative;
     z-index: 1;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 48px;
     height: 48px;
-    background: var(--bg-light);
+    background: var(--bg-card);
     border-radius: 50%;
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--border-dark);
   }
 
   .contactText {
