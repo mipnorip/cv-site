@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Персональный сайт-визитка Ильи Маслова, DevOps инженера">
+  <title>Илья Маслов - DevOps Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&family=Berkshire+Swash&family=Press+Start+2P&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Public+Pixel&display=swap" rel="stylesheet">
+  <script>
+    // Применяем тему до загрузки страницы, чтобы избежать мигания
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const theme = savedTheme || systemTheme;
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+  <div id="app">
+    <header id="header"></header>
+    <main>
+      <section id="personal-info"></section>
+      <section id="experience"></section>
+      <section id="projects"></section>
+      <section id="changelog"></section>
+    </main>
+    <footer id="footer"></footer>
+  </div>
+  <script type="module" src="./src/main.ts"></script>
+</body>
+</html>
+

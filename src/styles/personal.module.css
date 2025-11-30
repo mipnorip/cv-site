@@ -1,0 +1,245 @@
+.container {
+  padding: 8rem 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.imageWrapper {
+  flex: 0 0 300px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.photo:hover {
+  transform: scale(1.05);
+}
+
+.info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.name {
+  font-size: 3.5rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  margin: 0 0 1rem 0;
+  color: var(--text-color);
+  letter-spacing: 1px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.position {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+.age {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin: 0 0 2rem 0;
+  font-weight: 400;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
+}
+
+.contactLink:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateX(5px);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow);
+}
+
+.contactIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.contactText {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 6rem 1rem 2rem;
+  }
+
+  .content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .imageWrapper {
+    flex: 0 0 200px;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+
+  .position {
+    font-size: 1.2rem;
+  }
+
+  .info {
+    min-width: 100%;
+    width: 100%;
+  }
+
+  .contacts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .contactLink {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0.75rem;
+    gap: 0.5rem;
+    text-align: center;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    min-height: 100px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contactLink::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
+
+  .contactLink:hover {
+    transform: translateY(-4px) scale(1.02);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-hover);
+    background: var(--bg-card);
+    color: var(--text-color);
+  }
+
+  .contactLink:hover::before {
+    opacity: 0.1;
+  }
+
+  .contactLink:hover .contactIcon {
+    transform: scale(1.2);
+  }
+
+  .contactLink:hover .contactText {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+
+  .contactIcon {
+    font-size: 2rem;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--bg-light);
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+  }
+
+  .contactText {
+    position: relative;
+    z-index: 1;
+    font-size: 0.9rem;
+    white-space: normal;
+    word-break: break-word;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  /* Для длинных текстов (email, телефон) */
+  .contactLink[href^="mailto:"] .contactText,
+  .contactLink[href^="tel:"] .contactText {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 480px) {
+  .contacts {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .contactLink {
+    min-height: 90px;
+    padding: 1rem;
+  }
+
+  .contactIcon {
+    font-size: 1.75rem;
+    width: 44px;
+    height: 44px;
+  }
+}
+

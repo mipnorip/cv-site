@@ -1,0 +1,31 @@
+[
+  {
+    "company": "Компания 1",
+    "position": "DevOps Engineer",
+    "period": {
+      "start": "2023-01",
+      "end": "present"
+    },
+    "description": [
+      "Настройка и поддержка CI/CD пайплайнов",
+      "Автоматизация процессов развертывания",
+      "Мониторинг и оптимизация инфраструктуры"
+    ],
+    "technologies": ["Docker", "Kubernetes", "GitLab CI", "Terraform", "AWS"]
+  },
+  {
+    "company": "Компания 2",
+    "position": "Junior DevOps Engineer",
+    "period": {
+      "start": "2022-06",
+      "end": "2022-12"
+    },
+    "description": [
+      "Поддержка серверной инфраструктуры",
+      "Настройка мониторинга",
+      "Работа с контейнеризацией"
+    ],
+    "technologies": ["Docker", "Linux", "Prometheus", "Grafana"]
+  }
+]
+

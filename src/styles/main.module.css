@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Light theme colors - интересная цветовая гамма */
+  --primary-color: #6366f1;
+  --primary-hover: #4f46e5;
+  --secondary-color: #8b5cf6;
+  --accent-color: #ec4899;
+  --text-color: #1f2937;
+  --text-light: #6b7280;
+  --bg-color: #ffffff;
+  --bg-light: #f9fafb;
+  --bg-card: #ffffff;
+  --border-color: #e5e7eb;
+  --shadow: 0 4px 15px rgba(99, 102, 241, 0.1);
+  --shadow-hover: 0 8px 25px rgba(99, 102, 241, 0.15);
+  --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  
+  /* Fonts */
+  --font-display: 'Oswald', sans-serif; /* Для заголовков */
+  --font-heading: 'Manrope', sans-serif; /* Для подзаголовков */
+  --font-body: 'Manrope', sans-serif; /* Основной текст */
+  --font-mono: 'Public Pixel', monospace; /* Моноширинный */
+  --font-decorative: 'Berkshire Swash', cursive; /* Декоративный (аналог Berrter VCRCJA) */
+  --font-pixel: 'Press Start 2P', monospace; /* Пиксельный (аналог Tyny5) */
+  --font-alt: 'Inter', sans-serif; /* Альтернативный (аналог Galgo) */
+}
+
+[data-theme="dark"] {
+  --primary-color: #818cf8;
+  --primary-hover: #a5b4fc;
+  --secondary-color: #a78bfa;
+  --accent-color: #f472b6;
+  --text-color: #f9fafb;
+  --text-light: #d1d5db;
+  --bg-color: #111827;
+  --bg-light: #1f2937;
+  --bg-card: #1f2937;
+  --border-color: #374151;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.4);
+  --gradient: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #f472b6 100%);
+}
+
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-color);
+  line-height: 1.6;
+  background: var(--bg-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+section {
+  scroll-margin-top: 80px;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+

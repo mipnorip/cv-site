@@ -1,0 +1,14 @@
+{
+  "name": "Илья Маслов",
+  "age": 23,
+  "position": "DevOps Engineer",
+  "photo": "/assets/images/photo.jpg",
+  "contacts": {
+    "email": "ilya@example.com",
+    "phone": "+7 (XXX) XXX-XX-XX",
+    "telegram": "@ilyamaslov",
+    "github": "github.com/ilyamaslov",
+    "linkedin": "linkedin.com/in/ilyamaslov"
+  }
+}
+

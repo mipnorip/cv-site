@@ -1,0 +1,25 @@
+/* Berrter VCRCJA - декоративный шрифт для заголовков */
+@font-face {
+  font-family: 'Berrter VCRCJA';
+  src: url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+  font-display: swap;
+}
+
+/* Tyny5 - пиксельный шрифт */
+@font-face {
+  font-family: 'Tyny5';
+  src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+  font-display: swap;
+}
+
+/* Public Pixel - уже подключен через link в HTML */
+/* Manrope - уже подключен через link в HTML */
+/* Galgo - используем похожий шрифт */
+@font-face {
+  font-family: 'Galgo';
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  font-display: swap;
+}
+
+/* Oswald - уже подключен через link в HTML */
+

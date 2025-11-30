@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Проект 1",
+    "description": "Описание личного проекта по автоматизации инфраструктуры",
+    "type": "personal",
+    "link": "https://github.com/ilyamaslov/project1",
+    "technologies": ["Terraform", "Ansible", "AWS"],
+    "image": "/assets/images/project1.jpg"
+  },
+  {
+    "title": "Хобби проект",
+    "description": "Описание хобби проекта",
+    "type": "hobby",
+    "technologies": ["Python", "Docker"],
+    "image": "/assets/images/hobby1.jpg"
+  }
+]
+
