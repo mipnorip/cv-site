@@ -152,9 +152,11 @@
 }
 
 .typedRole {
-  display: inline-block;
+  display: inline-flex;
+  align-items: flex-end;
   min-height: 1.2em;
-  min-width: 140px;
+  min-width: min(260px, 70vw);
+  white-space: nowrap;
 }
 
 .age {

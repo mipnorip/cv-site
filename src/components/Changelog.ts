@@ -1,11 +1,17 @@
 import type { ChangelogEntry } from '../types/index.js';
 import changelogStyles from '../styles/changelog.module.css';
 
+interface MonthTask {
+  task: ChangelogEntry['tasks'][0];
+  weekLabel: string;
+  order: number;
+}
+
 interface MonthGroup {
   key: string;
   label: string;
-  weeks: ChangelogEntry[];
   totalTasks: number;
+  tasks: MonthTask[];
 }
 
 export class Changelog {
@@ -45,51 +51,41 @@ export class Changelog {
 
   private renderMonth(month: MonthGroup): string {
     const isExpanded = this.expandedMonths.has(month.key);
-    const weeksHTML = month.weeks.map(week => this.renderWeekGroup(week)).join('');
+    const tasksHTML = month.tasks.map(entry => this.renderTask(entry)).join('');
 
     return `
       <div class="${changelogStyles.entry}">
         <button class="${changelogStyles.monthHeader} ${isExpanded ? changelogStyles.monthHeaderExpanded : ''}" data-month="${month.key}">
           <div class="${changelogStyles.monthInfo}">
             <span class="${changelogStyles.monthLabel}">${month.label}</span>
-            <span class="${changelogStyles.monthMeta}">${month.totalTasks} задач · ${month.weeks.length} недель</span>
+            <span class="${changelogStyles.monthMeta}">${month.totalTasks} задач</span>
           </div>
           <span class="${changelogStyles.weekToggle}">${isExpanded ? '▼' : '▶'}</span>
         </button>
         <div class="${changelogStyles.monthContent} ${isExpanded ? changelogStyles.monthContentExpanded : ''}">
-          ${weeksHTML}
+          <div class="${changelogStyles.tasks}">
+            ${tasksHTML}
+          </div>
         </div>
       </div>
     `;
   }
 
-  private renderWeekGroup(entry: ChangelogEntry): string {
-    const tasksHTML = entry.tasks.map(task => this.renderTask(task)).join('');
-    return `
-      <div class="${changelogStyles.weekGroup}">
-        <div class="${changelogStyles.weekLabel}">
-          <span>${this.formatWeek(entry.week)}</span>
-          <span class="${changelogStyles.weekTasksCount}">${entry.tasks.length} задач</span>
-        </div>
-        <div class="${changelogStyles.tasks}">
-          ${tasksHTML}
-        </div>
-      </div>
-    `;
-  }
-
-  private renderTask(task: ChangelogEntry['tasks'][0]): string {
-    const categoryHTML = task.category
-      ? `<span class="${changelogStyles.taskCategory}">${task.category}</span>`
+  private renderTask(entry: MonthTask): string {
+    const categoryHTML = entry.task.category
+      ? `<span class="${changelogStyles.taskCategory}">${entry.task.category}</span>`
       : '';
 
     return `
       <div class="${changelogStyles.task}">
         <div class="${changelogStyles.taskHeader}">
-          <h4 class="${changelogStyles.taskTitle}">${task.title}</h4>
-          ${categoryHTML}
+          <div class="${changelogStyles.taskMeta}">
+            <span class="${changelogStyles.taskWeek}">${entry.weekLabel}</span>
+            ${categoryHTML}
+          </div>
+          <h4 class="${changelogStyles.taskTitle}">${entry.task.title}</h4>
         </div>
-        <p class="${changelogStyles.taskDescription}">${task.description}</p>
+        <p class="${changelogStyles.taskDescription}">${entry.task.description}</p>
       </div>
     `;
   }
@@ -106,19 +102,23 @@ export class Changelog {
         monthMap.set(key, {
           key,
           label,
-          weeks: [],
           totalTasks: 0,
+          tasks: [],
         });
       }
 
       const group = monthMap.get(key)!;
-      group.weeks.push(entry);
+      const weekLabel = this.formatWeek(entry.week);
+      const order = new Date(entry.week).getTime();
+      entry.tasks.forEach(task => {
+        group.tasks.push({ task, weekLabel, order });
+      });
       group.totalTasks += entry.tasks.length;
     });
 
     return Array.from(monthMap.values())
       .map(group => {
-        group.weeks.sort((a, b) => b.week.localeCompare(a.week));
+        group.tasks.sort((a, b) => b.order - a.order);
         return group;
       })
       .sort((a, b) => b.key.localeCompare(a.key));

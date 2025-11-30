@@ -148,26 +148,8 @@
   max-height: 5000px;
 }
 
-.weekGroup {
-  padding: 1.5rem 2rem 1.25rem;
-}
-
-.weekGroup + .weekGroup {
-  border-top: 1px solid var(--border-color);
-}
-
-.weekLabel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  font-family: var(--font-heading);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-color);
-}
-
 .tasks {
+  padding: 1.5rem 2rem 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -207,11 +189,26 @@
 
 .taskHeader {
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.taskMeta {
+  display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 0.75rem;
+  align-items: center;
   gap: 1rem;
+  width: 100%;
   flex-wrap: wrap;
+}
+
+.taskWeek {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
 .taskTitle {
@@ -274,18 +271,12 @@
     font-size: 1rem;
   }
 
-  .weekGroup {
-    padding: 1.25rem 1.25rem 1rem;
-  }
-
-  .weekLabel {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-  }
-
   .task {
     padding: 1rem;
+  }
+
+  .tasks {
+    padding: 1.25rem 1.25rem 1rem;
   }
 }
 
