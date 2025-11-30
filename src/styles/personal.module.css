@@ -100,20 +100,25 @@
   display: flex;
   align-items: flex-end;
   gap: 0.5rem;
+  min-height: 4rem;
 }
 
 .typedName {
-  display: inline-block;
-  min-height: 1.2em;
+  display: inline-flex;
+  align-items: flex-end;
+  min-height: 4rem;
+  width: 100%;
+  white-space: nowrap;
 }
 
 .typingCursor {
   display: inline-block;
   width: 2px;
-  height: 1.4em;
+  height: 1em;
   background: var(--text-color);
   animation: blink 0.8s steps(1) infinite;
   margin-left: 6px;
+  align-self: flex-end;
 }
 
 @keyframes blink {
@@ -149,13 +154,14 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  min-height: 1.5rem;
 }
 
 .typedRole {
   position: relative;
   display: inline-flex;
   align-items: flex-end;
-  min-height: 1.2em;
+  min-height: 1.5rem;
   width: clamp(280px, 32vw, 360px);
   min-width: clamp(280px, 32vw, 360px);
   max-width: clamp(280px, 32vw, 360px);
@@ -178,6 +184,15 @@
     width: min(80vw, 320px);
     min-width: min(80vw, 320px);
     max-width: min(80vw, 320px);
+    min-height: 1.4rem;
+  }
+
+  .name {
+    min-height: 3rem;
+  }
+
+  .typedName {
+    min-height: 3rem;
   }
 }
 
