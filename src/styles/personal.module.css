@@ -156,9 +156,9 @@
   display: inline-flex;
   align-items: flex-end;
   min-height: 1.2em;
-  width: clamp(240px, 36vw, 360px);
-  min-width: clamp(240px, 36vw, 360px);
-  max-width: clamp(240px, 36vw, 360px);
+  width: clamp(280px, 32vw, 360px);
+  min-width: clamp(280px, 32vw, 360px);
+  max-width: clamp(280px, 32vw, 360px);
   white-space: nowrap;
   font-variant-ligatures: none;
   font-feature-settings: 'liga' 0;
@@ -175,9 +175,9 @@
 
 @media (max-width: 768px) {
   .typedRole {
-    width: min(70vw, 320px);
-    min-width: min(70vw, 320px);
-    max-width: min(70vw, 320px);
+    width: min(80vw, 320px);
+    min-width: min(80vw, 320px);
+    max-width: min(80vw, 320px);
   }
 }
 

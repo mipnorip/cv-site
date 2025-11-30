@@ -141,6 +141,7 @@ export class PersonalInfo {
     };
 
     const typeText = async (element: HTMLElement, text: string, speed: number) => {
+      element.dataset.currentLength = String(text.length);
       element.textContent = '';
       for (const char of text) {
         element.textContent += char;
@@ -149,19 +150,21 @@ export class PersonalInfo {
     };
 
     const deleteText = async (element: HTMLElement, speed: number) => {
+      const targetLength = Number(element.dataset.placeholderLength ?? element.dataset.currentLength ?? 0);
       while ((element.textContent ?? '').length > 0) {
         element.textContent = (element.textContent ?? '').slice(0, -1);
         await this.wait(speed);
       }
+      element.dataset.currentLength = String(targetLength);
     };
 
     const loopRoles = async () => {
       let index = 0;
       while (true) {
         const role = roles[index];
-        moveCursor(roleElement);
-        await deleteText(roleElement, 45);
-        await typeText(roleElement, role, 90);
+      moveCursor(roleElement);
+      await deleteText(roleElement, 45);
+      await typeText(roleElement, role, 90);
         await this.wait(1200);
         index = (index + 1) % roles.length;
       }
