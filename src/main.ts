@@ -13,6 +13,30 @@ import {
 import { ThemeManager } from './utils/theme.js';
 import './styles/main.module.css';
 
+function initScrollAnimations(): void {
+  const animatedElements = document.querySelectorAll<HTMLElement>('[data-animate="fade"]');
+  if (!animatedElements.length) {
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: '0px 0px -10% 0px',
+    }
+  );
+
+  animatedElements.forEach(element => observer.observe(element));
+}
+
 async function init() {
   try {
     // Initialize theme manager first
@@ -44,6 +68,8 @@ async function init() {
 
     const footer = new Footer('footer');
     footer.render(personalData);
+
+    initScrollAnimations();
   } catch (error) {
     console.error('Error initializing application:', error);
     const app = document.getElementById('app');

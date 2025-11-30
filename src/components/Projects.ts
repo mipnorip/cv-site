@@ -24,7 +24,7 @@ export class Projects {
     const projectsHTML = filteredProjects.map(project => this.renderProject(project)).join('');
 
     this.container.innerHTML = `
-      <div class="${projectStyles.container}">
+      <div class="${projectStyles.container}" data-animate="fade">
         <h2 class="${projectStyles.title}">Проекты и увлечения</h2>
         <div class="${projectStyles.filters}">
           <button class="${projectStyles.filterButton} ${this.currentFilter === 'all' ? projectStyles.filterButtonActive : ''}" data-filter="all">

@@ -1,5 +1,5 @@
 .container {
-  padding: 4rem 2rem;
+  padding: 3.5rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
   background: var(--bg-light);
@@ -7,10 +7,10 @@
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   font-weight: 700;
   font-family: var(--font-display);
-  margin: 0 0 3rem 0;
+  margin: 0 0 2.5rem 0;
   text-align: center;
   color: var(--text-color);
   letter-spacing: 1px;
@@ -57,6 +57,7 @@
     0 0 0 2px var(--bg-light),
     inset 0 0 0 2px var(--bg-card);
   z-index: 2;
+  transform: translate(-50%, -50%);
 }
 
 .item::after {
@@ -69,6 +70,7 @@
   border-radius: 50%;
   background: var(--border-dark);
   z-index: 3;
+  transform: translate(-50%, -50%);
 }
 
 .content {

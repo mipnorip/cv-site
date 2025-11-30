@@ -17,7 +17,7 @@ export class Footer {
     const socialLinks = this.renderSocialLinks(personalData.contacts);
 
     this.container.innerHTML = `
-      <div class="${footerStyles.container}">
+      <div class="${footerStyles.container}" data-animate="fade">
         <div class="${footerStyles.content}">
           <p class="${footerStyles.copyright}">
             © ${currentYear} ${personalData.name}. Все права защищены.

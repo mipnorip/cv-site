@@ -16,7 +16,7 @@ export class Experience {
     const experiencesHTML = experiences.map(exp => this.renderExperience(exp)).join('');
 
     this.container.innerHTML = `
-      <div class="${experienceStyles.container}">
+      <div class="${experienceStyles.container}" data-animate="fade">
         <h2 class="${experienceStyles.title}">Опыт работы</h2>
         <div class="${experienceStyles.timeline}">
           ${experiencesHTML}

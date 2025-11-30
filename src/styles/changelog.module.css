@@ -1,5 +1,5 @@
 .container {
-  padding: 4rem 2rem;
+  padding: 3.5rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
   background: var(--bg-light);
@@ -7,10 +7,10 @@
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   font-weight: 700;
   font-family: var(--font-display);
-  margin: 0 0 1rem 0;
+  margin: 0 0 1.5rem 0;
   text-align: center;
   color: var(--text-color);
   letter-spacing: 1px;
@@ -19,14 +19,14 @@
 .subtitle {
   text-align: center;
   color: var(--text-light);
-  margin: 0 0 3rem 0;
-  font-size: 1.1rem;
+  margin: 0 0 2.5rem 0;
+  font-size: 1rem;
 }
 
 .entries {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .entry {
@@ -59,9 +59,9 @@
   border-color: var(--text-color);
 }
 
-.weekHeader {
+.monthHeader {
   width: 100%;
-  padding: 1.5rem 2rem;
+  padding: 1.25rem 1.75rem;
   background: var(--bg-card);
   border: none;
   border-bottom: 2px solid var(--border-dark);
@@ -71,15 +71,14 @@
   align-items: center;
   text-align: left;
   transition: background 0.3s ease;
-  flex-wrap: wrap;
   gap: 1rem;
   position: relative;
 }
 
-.weekHeader::before {
-  content: 'WEEK_';
+.monthHeader::before {
+  content: 'MONTH_';
   position: absolute;
-  top: 0.5rem;
+  top: 0.4rem;
   left: 1rem;
   font-family: var(--font-mono);
   font-size: 0.7rem;
@@ -88,23 +87,35 @@
   opacity: 0.5;
 }
 
-.weekHeader:hover {
+.monthHeader:hover {
   background: var(--bg-light);
 }
 
-.weekHeaderExpanded {
+.monthHeaderExpanded {
   background: var(--bg-light);
 }
 
-.weekDate {
+.monthInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  margin-left: 3.5rem;
+}
+
+.monthLabel {
   font-size: 1.1rem;
   font-weight: 700;
   font-family: var(--font-display);
   color: var(--text-color);
-  flex: 1;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-left: 4rem;
+}
+
+.monthMeta {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  letter-spacing: 1px;
 }
 
 .weekTasksCount {
@@ -119,29 +130,47 @@
   font-family: var(--font-mono);
 }
 
-.weekHeader:hover .weekToggle {
+.monthHeader:hover .weekToggle {
   color: var(--text-color);
 }
 
-.weekHeaderExpanded .weekToggle {
+.monthHeaderExpanded .weekToggle {
   transform: rotate(90deg);
 }
 
-.weekContent {
+.monthContent {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
 }
 
-.weekContentExpanded {
+.monthContentExpanded {
   max-height: 5000px;
 }
 
+.weekGroup {
+  padding: 1.5rem 2rem 1.25rem;
+}
+
+.weekGroup + .weekGroup {
+  border-top: 1px solid var(--border-color);
+}
+
+.weekLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-color);
+}
+
 .tasks {
-  padding: 0 2rem 1.5rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .task {
@@ -226,23 +255,33 @@
 
 @media (max-width: 768px) {
   .container {
-    padding: 3rem 1rem;
+    padding: 2.5rem 1rem;
   }
 
   .title {
     font-size: 2rem;
   }
 
-  .weekHeader {
-    padding: 1rem 1.5rem;
+  .monthHeader {
+    padding: 1rem 1.25rem;
   }
 
-  .weekDate {
+  .monthInfo {
+    margin-left: 2.5rem;
+  }
+
+  .monthLabel {
     font-size: 1rem;
   }
 
-  .tasks {
-    padding: 0 1.5rem 1rem 1.5rem;
+  .weekGroup {
+    padding: 1.25rem 1.25rem 1rem;
+  }
+
+  .weekLabel {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
   }
 
   .task {
