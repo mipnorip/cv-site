@@ -14,10 +14,9 @@ import { ThemeManager } from './utils/theme.js';
 import './styles/main.module.css';
 
 function initScrollAnimations(): void {
-  const animatedElements = document.querySelectorAll<HTMLElement>('[data-animate="fade"]');
-  if (!animatedElements.length) {
-    return;
-  }
+  const selector = '[data-animate="fade"]';
+  const animatedElements = (): HTMLElement[] => Array.from(document.querySelectorAll<HTMLElement>(selector));
+  const processed = new WeakSet<HTMLElement>();
 
   const reveal = (element: HTMLElement): void => {
     element.classList.add('is-visible');
@@ -28,41 +27,61 @@ function initScrollAnimations(): void {
     return rect.top < window.innerHeight * 0.95 && rect.bottom > window.innerHeight * -0.1;
   };
 
-  if (!('IntersectionObserver' in window)) {
-    animatedElements.forEach(element => reveal(element));
-    return;
+  let observer: IntersectionObserver | null = null;
+
+  if ('IntersectionObserver' in window) {
+    observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            reveal(entry.target as HTMLElement);
+            observer?.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -10% 0px',
+      }
+    );
   }
 
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          reveal(entry.target as HTMLElement);
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.2,
-      rootMargin: '0px 0px -10% 0px',
+  const processElement = (element: HTMLElement): void => {
+    if (processed.has(element)) {
+      return;
     }
-  );
+    processed.add(element);
 
-  animatedElements.forEach(element => {
+    if (!observer) {
+      reveal(element);
+      return;
+    }
+
     if (isInViewport(element)) {
       reveal(element);
     } else {
       observer.observe(element);
     }
-  });
+  };
+
+  const scanForElements = (): void => {
+    animatedElements().forEach(processElement);
+  };
+
+  scanForElements();
 
   window.addEventListener('load', () => {
-    animatedElements.forEach(element => {
-      if (!element.classList.contains('is-visible') && isInViewport(element)) {
-        reveal(element);
-      }
-    });
+    scanForElements();
+    setTimeout(() => {
+      animatedElements().forEach(reveal);
+    }, 2000);
   });
+
+  const mutationObserver = new MutationObserver(() => {
+    scanForElements();
+  });
+
+  mutationObserver.observe(document.body, { childList: true, subtree: true });
 }
 
 async function init() {
