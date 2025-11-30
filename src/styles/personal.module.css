@@ -117,27 +117,6 @@
   overflow: hidden;
 }
 
-.typingCursor {
-  display: inline-block;
-  width: 2px;
-  height: 1em;
-  min-width: 2px;
-  max-width: 2px;
-  background: var(--text-color);
-  animation: blink 0.8s steps(1) infinite;
-  margin-left: 6px;
-  align-self: flex-end;
-  flex-shrink: 0;
-}
-
-@keyframes blink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
 
 .divider {
   width: 100%;

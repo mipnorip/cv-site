@@ -24,6 +24,10 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Copy built files from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
+# Fix permissions for nginx
+RUN chmod -R 755 /usr/share/nginx/html && \
+    chown -R nginx:nginx /usr/share/nginx/html
+
 # Expose port 80
 EXPOSE 80
 

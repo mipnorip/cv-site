@@ -20,7 +20,7 @@ export class Footer {
       <div class="${footerStyles.container}" data-animate="fade">
         <div class="${footerStyles.content}">
           <p class="${footerStyles.copyright}">
-            © ${currentYear} ${personalData.name}. Все права защищены.
+            © ${currentYear} ${personalData.name}. Все права защищены (или нет).
           </p>
           <div class="${footerStyles.social}">
             ${socialLinks}

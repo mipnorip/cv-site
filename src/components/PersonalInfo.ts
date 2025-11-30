@@ -64,7 +64,6 @@ export class PersonalInfo {
             <div class="${personalStyles.nameSection}">
               <h1 class="${personalStyles.name}">
                 <span class="${personalStyles.typedName}" data-name="${data.name.toUpperCase()}">${data.name.toUpperCase()}</span>
-                <span class="${personalStyles.typingCursor}" aria-hidden="true"></span>
               </h1>
               <div class="${personalStyles.divider}"></div>
             </div>
@@ -72,7 +71,7 @@ export class PersonalInfo {
               <span class="${personalStyles.typedRole}" data-placeholder="${longestRoleUpper}">${defaultRole}</span>
               <span class="${personalStyles.rolePlaceholder}" aria-hidden="true">${longestRoleUpper}</span>
             </p>
-            <p class="${personalStyles.age}">AGE: ${preciseAge}</p>
+            <p class="${personalStyles.age}">${preciseAge}</p>
             <div class="${personalStyles.contacts} ${personalStyles.contactsHidden}">
               ${contactsHTML}
             </div>
@@ -90,7 +89,7 @@ export class PersonalInfo {
     if (contacts.email) {
       contactItems.push(`
         <a href="mailto:${contacts.email}" class="${personalStyles.contactLink}">
-          <span class="${personalStyles.contactIcon}">✉</span>
+          <span class="${personalStyles.contactIcon}">📧</span>
           <span class="${personalStyles.contactText}">${contacts.email}</span>
         </a>
       `);
@@ -108,7 +107,7 @@ export class PersonalInfo {
     if (contacts.telegram) {
       contactItems.push(`
         <a href="https://t.me/${contacts.telegram.replace('@', '')}" target="_blank" rel="noopener noreferrer" class="${personalStyles.contactLink}">
-          <span class="${personalStyles.contactIcon}">✈</span>
+          <span class="${personalStyles.contactIcon}">🐣</span>
           <span class="${personalStyles.contactText}">${contacts.telegram}</span>
         </a>
       `);
@@ -143,19 +142,14 @@ export class PersonalInfo {
     }
     const nameElement = this.container.querySelector<HTMLElement>(`.${personalStyles.typedName}`);
     const roleElement = this.container.querySelector<HTMLElement>(`.${personalStyles.typedRole}`);
-    const cursorElement = this.container.querySelector<HTMLElement>(`.${personalStyles.typingCursor}`);
 
-    if (!nameElement || !roleElement || !cursorElement) {
+    if (!nameElement || !roleElement) {
       return;
     }
 
     this.typingInitialized = true;
     const nameText = name.toUpperCase();
     const roles = this.rotatingRoles.map(role => role.toUpperCase());
-
-    const moveCursor = (target: HTMLElement) => {
-      target.insertAdjacentElement('afterend', cursorElement);
-    };
 
     const typeText = async (element: HTMLElement, text: string, speed: number) => {
       element.dataset.currentLength = String(text.length);
@@ -187,7 +181,6 @@ export class PersonalInfo {
       let firstRoleShown = false;
       while (true) {
         const role = roles[index];
-        moveCursor(roleElement);
         if (firstRoleShown) {
           await deleteText(roleElement, 45);
         }
@@ -206,10 +199,8 @@ export class PersonalInfo {
     };
 
     const startTyping = async () => {
-      moveCursor(nameElement);
       await typeText(nameElement, nameText, 100);
       await this.wait(500);
-      moveCursor(roleElement);
       await loopRoles();
     };
 
@@ -239,7 +230,7 @@ export class PersonalInfo {
     const years = this.formatUnit(age.years, ['год', 'года', 'лет']);
     const months = this.formatUnit(age.months, ['месяц', 'месяца', 'месяцев']);
     const days = this.formatUnit(age.days, ['день', 'дня', 'дней']);
-    return `${years} · ${months} · ${days}`;
+    return `${years}, ${months}, ${days}`;
   }
 
   private formatUnit(value: number, forms: [string, string, string]): string {

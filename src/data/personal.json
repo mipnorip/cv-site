@@ -1,13 +1,13 @@
 {
   "name": "Илья Маслов",
   "age": 23,
-  "position": "DevOps Engineer",
+  "position": "Tech Lead of SRE DevOps Engineer in WB",
   "photo": "/assets/images/photo.jpg",
   "contacts": {
-    "email": "ilya@example.com",
-    "phone": "+7 (XXX) XXX-XX-XX",
-    "telegram": "@ilyamaslov",
-    "github": "github.com/ilyamaslov",
+    "email": "work@ilyamaslov.ru",
+    "phone": "+7 (919) 232 92 03",
+    "telegram": "@capitaoDeAria",
+    "github": "github.com/mipnorip",
     "linkedin": "linkedin.com/in/ilyamaslov"
   }
 }
