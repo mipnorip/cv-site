@@ -27,6 +27,10 @@ export class PersonalInfo {
     const contactsHTML = this.renderContacts(data.contacts);
     const preciseAge = this.formatAgeString(this.calculatePreciseAge());
     const defaultRole = this.rotatingRoles[0].toUpperCase();
+    const longestRole = this.rotatingRoles.reduce((longest, current) =>
+      current.length > longest.length ? current : longest
+    );
+    const longestRoleUpper = longestRole.toUpperCase();
 
     this.container.innerHTML = `
       <div class="${personalStyles.container}" data-animate="fade">
@@ -49,7 +53,7 @@ export class PersonalInfo {
               <div class="${personalStyles.divider}"></div>
             </div>
             <p class="${personalStyles.position}">
-              <span class="${personalStyles.typedRole}">${defaultRole}</span>
+              <span class="${personalStyles.typedRole}" data-placeholder="${longestRoleUpper}">${defaultRole}</span>
             </p>
             <p class="${personalStyles.age}">AGE: ${preciseAge}</p>
             <div class="${personalStyles.contacts}">

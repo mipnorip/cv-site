@@ -152,11 +152,22 @@
 }
 
 .typedRole {
+  position: relative;
   display: inline-flex;
   align-items: flex-end;
   min-height: 1.2em;
-  min-width: min(260px, 70vw);
+  width: clamp(220px, 40vw, 360px);
   white-space: nowrap;
+  font-variant-ligatures: none;
+}
+
+.typedRole::after {
+  content: attr(data-placeholder);
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+  height: 0;
+  overflow: hidden;
 }
 
 .age {
