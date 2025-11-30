@@ -26,11 +26,27 @@ export class PersonalInfo {
   render(data: PersonalData): void {
     const contactsHTML = this.renderContacts(data.contacts);
     const preciseAge = this.formatAgeString(this.calculatePreciseAge());
-    const defaultRole = this.rotatingRoles[0].toUpperCase();
+    const defaultRole = ''; // Start with empty role, like name
     const longestRole = this.rotatingRoles.reduce((longest, current) =>
       current.length > longest.length ? current : longest
     );
     const longestRoleUpper = longestRole.toUpperCase();
+    
+    // Measure actual width of longest role text
+    const measureElement = document.createElement('span');
+    measureElement.style.position = 'absolute';
+    measureElement.style.visibility = 'hidden';
+    measureElement.style.whiteSpace = 'nowrap';
+    measureElement.style.fontSize = '1.1rem';
+    measureElement.style.fontWeight = '600';
+    measureElement.style.fontFamily = 'var(--font-heading)';
+    measureElement.style.letterSpacing = '1px';
+    measureElement.style.textTransform = 'uppercase';
+    measureElement.textContent = longestRoleUpper;
+    document.body.appendChild(measureElement);
+    const measuredWidth = measureElement.offsetWidth;
+    document.body.removeChild(measureElement);
+    const widthInRem = (measuredWidth / parseFloat(getComputedStyle(document.documentElement).fontSize)) + 2; // Add 2rem padding
 
     this.container.innerHTML = `
       <div class="${personalStyles.container}" data-animate="fade">
@@ -52,11 +68,12 @@ export class PersonalInfo {
               </h1>
               <div class="${personalStyles.divider}"></div>
             </div>
-            <p class="${personalStyles.position}">
+            <p class="${personalStyles.position}" style="--role-width: ${widthInRem}rem;">
               <span class="${personalStyles.typedRole}" data-placeholder="${longestRoleUpper}">${defaultRole}</span>
+              <span class="${personalStyles.rolePlaceholder}" aria-hidden="true">${longestRoleUpper}</span>
             </p>
             <p class="${personalStyles.age}">AGE: ${preciseAge}</p>
-            <div class="${personalStyles.contacts}">
+            <div class="${personalStyles.contacts} ${personalStyles.contactsHidden}">
               ${contactsHTML}
             </div>
           </div>
@@ -158,13 +175,31 @@ export class PersonalInfo {
       element.dataset.currentLength = String(targetLength);
     };
 
+    const showContacts = () => {
+      const contactsElement = this.container.querySelector<HTMLElement>(`.${personalStyles.contacts}`);
+      if (contactsElement) {
+        contactsElement.classList.remove(personalStyles.contactsHidden);
+      }
+    };
+
     const loopRoles = async () => {
       let index = 0;
+      let firstRoleShown = false;
       while (true) {
         const role = roles[index];
-      moveCursor(roleElement);
-      await deleteText(roleElement, 45);
-      await typeText(roleElement, role, 90);
+        moveCursor(roleElement);
+        if (firstRoleShown) {
+          await deleteText(roleElement, 45);
+        }
+        await typeText(roleElement, role, 90);
+        
+        // Show contacts after first role is fully typed
+        if (!firstRoleShown) {
+          firstRoleShown = true;
+          await this.wait(300); // Small delay after typing completes
+          showContacts();
+        }
+        
         await this.wait(1200);
         index = (index + 1) % roles.length;
       }
@@ -174,7 +209,6 @@ export class PersonalInfo {
       moveCursor(nameElement);
       await typeText(nameElement, nameText, 100);
       await this.wait(500);
-      await deleteText(roleElement, 30);
       moveCursor(roleElement);
       await loopRoles();
     };

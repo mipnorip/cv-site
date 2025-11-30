@@ -11,6 +11,7 @@ import {
   loadChangelog,
 } from './utils/dataLoader.js';
 import { ThemeManager } from './utils/theme.js';
+import './styles/variables.css';
 import './styles/main.module.css';
 
 function initScrollAnimations(): void {
