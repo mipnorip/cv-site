@@ -19,11 +19,25 @@ function initScrollAnimations(): void {
     return;
   }
 
+  const reveal = (element: HTMLElement): void => {
+    element.classList.add('is-visible');
+  };
+
+  const isInViewport = (element: HTMLElement): boolean => {
+    const rect = element.getBoundingClientRect();
+    return rect.top < window.innerHeight * 0.95 && rect.bottom > window.innerHeight * -0.1;
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    animatedElements.forEach(element => reveal(element));
+    return;
+  }
+
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
+          reveal(entry.target as HTMLElement);
           observer.unobserve(entry.target);
         }
       });
@@ -34,7 +48,21 @@ function initScrollAnimations(): void {
     }
   );
 
-  animatedElements.forEach(element => observer.observe(element));
+  animatedElements.forEach(element => {
+    if (isInViewport(element)) {
+      reveal(element);
+    } else {
+      observer.observe(element);
+    }
+  });
+
+  window.addEventListener('load', () => {
+    animatedElements.forEach(element => {
+      if (!element.classList.contains('is-visible') && isInViewport(element)) {
+        reveal(element);
+      }
+    });
+  });
 }
 
 async function init() {
