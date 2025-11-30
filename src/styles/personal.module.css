@@ -156,9 +156,12 @@
   display: inline-flex;
   align-items: flex-end;
   min-height: 1.2em;
-  width: clamp(220px, 40vw, 360px);
+  width: clamp(240px, 36vw, 360px);
+  min-width: clamp(240px, 36vw, 360px);
+  max-width: clamp(240px, 36vw, 360px);
   white-space: nowrap;
   font-variant-ligatures: none;
+  font-feature-settings: 'liga' 0;
 }
 
 .typedRole::after {
@@ -168,6 +171,14 @@
   white-space: nowrap;
   height: 0;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .typedRole {
+    width: min(70vw, 320px);
+    min-width: min(70vw, 320px);
+    max-width: min(70vw, 320px);
+  }
 }
 
 .age {
