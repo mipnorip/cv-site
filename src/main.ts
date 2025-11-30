@@ -17,6 +17,7 @@ function initScrollAnimations(): void {
   const selector = '[data-animate="fade"]';
   const animatedElements = (): HTMLElement[] => Array.from(document.querySelectorAll<HTMLElement>(selector));
   const processed = new WeakSet<HTMLElement>();
+  const htmlElement = document.documentElement;
 
   const reveal = (element: HTMLElement): void => {
     element.classList.add('is-visible');
@@ -69,6 +70,14 @@ function initScrollAnimations(): void {
   };
 
   scanForElements();
+
+  const enableAnimations = (): void => {
+    if (!htmlElement.classList.contains('animations-ready')) {
+      htmlElement.classList.add('animations-ready');
+    }
+  };
+
+  enableAnimations();
 
   window.addEventListener('load', () => {
     scanForElements();
