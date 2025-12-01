@@ -44,10 +44,10 @@ export class Experience {
         <div class="${experienceStyles.content}">
           <div class="${experienceStyles.contentInner}">
             <div class="${experienceStyles.header}">
-              <h3 class="${experienceStyles.company}">${exp.company.toUpperCase()}</h3>
+              <h3 class="${experienceStyles.company}">${exp.company}</h3>
               <span class="${experienceStyles.period}">${period}</span>
             </div>
-            <p class="${experienceStyles.position}">${exp.position.toUpperCase()}</p>
+            <p class="${experienceStyles.position}">${exp.position}</p>
             <ul class="${experienceStyles.description}">
               ${descriptionHTML}
             </ul>

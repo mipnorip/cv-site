@@ -1,31 +1,85 @@
 [
   {
-    "company": "Компания 1",
-    "position": "DevOps Engineer",
+    "company": "RWB (a.k. Wildberries)",
+    "position": "DevOps Engineer / Tech Lead of SRE",
     "period": {
-      "start": "2023-01",
+      "start": "2024-04",
       "end": "present"
     },
     "description": [
       "Настройка и поддержка CI/CD пайплайнов",
       "Автоматизация процессов развертывания",
-      "Мониторинг и оптимизация инфраструктуры"
+      "Мониторинг и оптимизация инфраструктуры",
+      "Разработка и поддержка инфраструктуры для внутренних и внешних проектов",
+      "Обслуживание и поддержка баз данных", 
+      "Bash/Python scripting инструментов ускорения работы команды"
     ],
-    "technologies": ["Docker", "Kubernetes", "GitLab CI", "Terraform", "AWS"]
+    "technologies": ["ansible", "SRE", "iac", "Linux", "bash", "Python",
+      "docker", "Kaniko", "Kubernetes", "GitLab CI", "helm",
+      "Grafana", "Prometheus","Thanos", "Alertmanager",
+      "Kafka", "Redis", "PostgreSQL", "MongoDB", "PostgreSQL", "ClickHouse"
+    ]
   },
   {
-    "company": "Компания 2",
-    "position": "Junior DevOps Engineer",
+    "company": "Самозанятый / Anykey",
+    "position": "Fullstack developer + Ops",
     "period": {
-      "start": "2022-06",
-      "end": "2022-12"
+      "start": "2023-10",
+      "end": "2024-04"
     },
     "description": [
-      "Поддержка серверной инфраструктуры",
-      "Настройка мониторинга",
-      "Работа с контейнеризацией"
+    "Разработка и поддержка веб-сайтов для малого бизнеса и персональных проектов",
+    "Создание инструментов автоматизации и администрирования для клиентов",
+    "Разработка парсеров данных для интеграции с внешними сервисами",
+    "Техническая поддержка и DevOps задачи (развёртывание, CI/CD, настройка серверов)",
+    "Оптимизация рабочих процессов с помощью собственных инструментов и скриптов", 
+    "Системное администрирование серверов на базе Linux (настройка, обновление, резервное копирование)",
+    "Настройка и поддержка VPN-серверов для клиентов (WireGuard, OpenVPN)",
+    "Обеспечение безопасности серверов (firewall, SSH-ключи, обновления)",
+    "Миграция и настройка облачных VPS и выделенных серверов",
+    "Настройка мониторинга ресурсов и оповещений (Grafana, Prometheus)"
     ],
-    "technologies": ["Docker", "Linux", "Prometheus", "Grafana"]
+    "technologies": [
+      "HTML", "CSS", "Vanila JavaScript", "Python", "Linux", "bash", "Git", "GitHub", "GitLab", "Docker", "CI/CD", "DevOps", "Server Administration"
+    ]
+  },
+  {
+    "company": "RTM Технологии",
+    "position": "Junior pentester / Компьютентерных техничский судебный эксперт",
+    "period": {
+      "start": "2022-08",
+      "end": "2023-11"
+    },
+    "description": [
+    "Анализ защищённости и аудит информационных систем заказчиков",
+    "Исследование потенциальных уязвимостей систем безопасности",
+    "Подготовка отчётов и документации по результатам проведённого аудита",
+    "Участие в проведении внутренних расследований информационных инцидентов",
+    "Работа с инструментами мониторинга и контейнеризации для создания тестовых стендов",
+    "Составление заключений и консультации для судов по вопросам цифровых технологий"
+
+    ],
+    "technologies": [
+      "penetration testing",
+      "vulnerability assessment",
+      "web application security",
+      "network security",
+      "OWASP Top 10",
+      "Burp Suite",
+      "Nmap",
+      "Metasploit",
+      "Kali Linux",
+      "Wireshark",
+      "Social Engineering",
+      "Privilege Escalation",
+      "Active Directory attacks",
+      "Linux",
+      "Windows",
+      "Python scripting",
+      "отчётность",
+      "автоматизация тестирования",
+      "инструментарий Red Team"
+    ]
   }
 ]
 

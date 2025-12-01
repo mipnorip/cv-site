@@ -1,18 +1,15 @@
 [
   {
-    "title": "Проект 1",
-    "description": "Описание личного проекта по автоматизации инфраструктуры",
+    "title": "Этот сайт",
+    "description": "Мой шеврум под присмотром вайб кодинга с cursore. Давно не кодил frontend, получилось мило :-)",
     "type": "personal",
-    "link": "https://github.com/ilyamaslov/project1",
-    "technologies": ["Terraform", "Ansible", "AWS"],
-    "image": "/assets/images/project1.jpg"
+    "link": "https://github.com/mipnorip/cv-site",
+    "technologies": ["typescript", "vite", "css", "html", "javascript", "nginx", "ci/cd"]
   },
   {
-    "title": "Хобби проект",
-    "description": "Описание хобби проекта",
+    "title": "Telegram to rss",
+    "description": "Небольшой сервис для сбора каналов в telegram в rss ленту. Сделал для себя, чтобы не пропускать важные новости.",
     "type": "hobby",
-    "technologies": ["Python", "Docker"],
-    "image": "/assets/images/hobby1.jpg"
+    "technologies": ["Python", "Docker", "PostgreSQL"]
   }
 ]
-

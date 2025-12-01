@@ -1,30 +1,15 @@
 [
   {
-    "week": "2024-01-15",
+    "week": "2025-12-01",
     "tasks": [
       {
-        "title": "Настройка CI/CD пайплайна",
-        "description": "Реализовал автоматический деплой приложения в staging окружение при мердже в develop ветку",
-        "category": "DevOps"
+        "title": "Сайт ilyamaslov.ru",
+        "description": "Получается, день рождения этого сайта :-)",
+        "category": "Development"
       },
       {
-        "title": "Оптимизация Docker образов",
-        "description": "Уменьшил размер production образов на 40% за счет многостадийной сборки",
-        "category": "Optimization"
-      }
-    ]
-  },
-  {
-    "week": "2024-01-08",
-    "tasks": [
-      {
-        "title": "Настройка мониторинга",
-        "description": "Добавил алерты в Prometheus для критических метрик приложения",
-        "category": "Monitoring"
-      },
-      {
-        "title": "Миграция базы данных",
-        "description": "Выполнил миграцию БД на новую версию без простоя сервиса",
+        "title": "Дебаг роли clickhouse",
+        "description": "Починил роль clickhouse, чтобы они работали корректно с сервером clickhouse",
         "category": "Infrastructure"
       }
     ]

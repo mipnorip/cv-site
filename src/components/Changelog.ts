@@ -79,10 +79,6 @@ export class Changelog {
     return `
       <div class="${changelogStyles.task}">
         <div class="${changelogStyles.taskHeader}">
-          <div class="${changelogStyles.taskMeta}">
-            <span class="${changelogStyles.taskWeek}">${entry.weekLabel}</span>
-            ${categoryHTML}
-          </div>
           <h4 class="${changelogStyles.taskTitle}">${entry.task.title}</h4>
         </div>
         <p class="${changelogStyles.taskDescription}">${entry.task.description}</p>
