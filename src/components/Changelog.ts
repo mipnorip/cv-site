@@ -72,10 +72,6 @@ export class Changelog {
   }
 
   private renderTask(entry: MonthTask): string {
-    const categoryHTML = entry.task.category
-      ? `<span class="${changelogStyles.taskCategory}">${entry.task.category}</span>`
-      : '';
-
     return `
       <div class="${changelogStyles.task}">
         <div class="${changelogStyles.taskHeader}">
